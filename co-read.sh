@@ -1,14 +1,15 @@
 #!/bin/bash
 
-WPM=260
+WPM=300
 INFILE=$1
-BASENAME=`basename -s .pdf $INFILE`
+BASENAME=`basename -s .pdf "$INFILE"`
 TXTFILE=/tmp/tmp.txt
 SNDFILE=/tmp/tmp.m4a
 MP3FILE=$BASENAME.mp3
 TMPFILE=/tmp/tmpfile
 
 echo "extracting text from $INFILE"
+
 pdftotext "$INFILE" "$TXTFILE"
 iconv -f ISO-8859-1 -t utf8 "$TXTFILE" > $TMPFILE
 
